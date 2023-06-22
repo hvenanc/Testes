@@ -9,15 +9,6 @@ public class UsuarioFornecedor {
     private String email;
     private String senha;
 
-    public UsuarioFornecedor(String nomeCompleto, String nomeUsuario, String cpf, String dataNascimento, String email, String senha) {
-        this.nomeCompleto = nomeCompleto;
-        this.nomeUsuario = nomeUsuario;
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
-        this.email = email;
-        this.senha = senha;
-    }
-
     public String getCpf() {
         return cpf;
     }

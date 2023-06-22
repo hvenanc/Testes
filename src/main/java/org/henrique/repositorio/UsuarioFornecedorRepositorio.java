@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioFornecedorRepositorio {
-
     private final List<UsuarioFornecedor> usuarios = new ArrayList<>();
 
     public void inserirUsuario(UsuarioFornecedor usuario) {
