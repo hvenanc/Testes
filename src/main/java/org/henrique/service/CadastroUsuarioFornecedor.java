@@ -10,7 +10,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CadastroUsuarioFornecedor {
-    public String cadastraoUsuarioForncedor(UsuarioFornecedor usuario, UsuarioFornecedorRepositorio repositorio) {
+    private final UsuarioFornecedorRepositorio repositorio;
+
+    public CadastroUsuarioFornecedor(UsuarioFornecedorRepositorio repositorio) {
+        this.repositorio = repositorio;
+    }
+
+    public String cadastraoUsuarioForncedor(UsuarioFornecedor usuario) {
 
         String nomeCompleto = usuario.getNomeCompleto();
         String nomeUsuario = usuario.getNomeUsuario();

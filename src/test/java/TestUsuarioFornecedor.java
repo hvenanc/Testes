@@ -11,16 +11,16 @@ public class TestUsuarioFornecedor {
 
         UsuarioFornecedor usuarioFornecedor = new UsuarioFornecedor();
         UsuarioFornecedorRepositorio repositorio = new UsuarioFornecedorRepositorio();
-        CadastroUsuarioFornecedor cadastro = new CadastroUsuarioFornecedor();
+        CadastroUsuarioFornecedor cadastro = new CadastroUsuarioFornecedor(repositorio);
 
         usuarioFornecedor.setNomeCompleto("Henrique Venâncio");
         usuarioFornecedor.setNomeUsuario("hvs");
-        usuarioFornecedor.setCpf("58087777777");
+        usuarioFornecedor.setCpf("34844609033");
         usuarioFornecedor.setDataNascimento("24/04/2011");
         usuarioFornecedor.setSenha("788");
         usuarioFornecedor.setEmail("hvs@poli.br");
 
-        Exception exception = Assertions.assertThrows(RuntimeException.class, () -> cadastro.cadastraoUsuarioForncedor(usuarioFornecedor,repositorio));
+        Exception exception = Assertions.assertThrows(RuntimeException.class, () -> cadastro.cadastraoUsuarioForncedor(usuarioFornecedor));
 
         String mensagem = "A senha não atende aos padrões exigidos!";
 
@@ -33,18 +33,39 @@ public class TestUsuarioFornecedor {
 
         UsuarioFornecedor usuarioFornecedor = new UsuarioFornecedor();
         UsuarioFornecedorRepositorio repositorio = new UsuarioFornecedorRepositorio();
-        CadastroUsuarioFornecedor cadastro = new CadastroUsuarioFornecedor();
+        CadastroUsuarioFornecedor cadastro = new CadastroUsuarioFornecedor(repositorio);
 
         usuarioFornecedor.setNomeCompleto("Henrique Venâncio");
         usuarioFornecedor.setNomeUsuario("hvs");
-        usuarioFornecedor.setCpf("13130094407");
+        usuarioFornecedor.setCpf("34844609033");
         usuarioFornecedor.setDataNascimento("29/05/2011");
         usuarioFornecedor.setSenha("9400030448");
         usuarioFornecedor.setEmail("hvs@poli.br");
 
-        String teste = cadastro.cadastraoUsuarioForncedor(usuarioFornecedor,repositorio);
+        String teste = cadastro.cadastraoUsuarioForncedor(usuarioFornecedor);
         Assertions.assertEquals("Usuário Cadastrado com Sucesso!",teste);
 
+    }
+
+    @Test
+    public void testeUsuarioComNomeCompletoNulo() {
+
+        UsuarioFornecedor usuarioFornecedor = new UsuarioFornecedor();
+        UsuarioFornecedorRepositorio repositorio = new UsuarioFornecedorRepositorio();
+        CadastroUsuarioFornecedor cadastro = new CadastroUsuarioFornecedor(repositorio);
+
+        usuarioFornecedor.setNomeCompleto(null);
+        usuarioFornecedor.setNomeUsuario("hvs");
+        usuarioFornecedor.setCpf("58087777777");
+        usuarioFornecedor.setDataNascimento("24/04/2011");
+        usuarioFornecedor.setSenha("94003046");
+        usuarioFornecedor.setEmail("hvs@poli.br");
+
+        Exception exception = Assertions.assertThrows(RuntimeException.class, () -> cadastro.cadastraoUsuarioForncedor(usuarioFornecedor));
+
+        String mensagem = "Insira um nome válido!";
+
+        Assertions.assertEquals(exception.getMessage(),mensagem);
 
     }
 
