@@ -9,10 +9,10 @@ import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CadastroUsuarioFornecedor {
+public class UsuarioFornecedorService {
     private final UsuarioFornecedorRepositorio repositorio;
 
-    public CadastroUsuarioFornecedor(UsuarioFornecedorRepositorio repositorio) {
+    public UsuarioFornecedorService(UsuarioFornecedorRepositorio repositorio) {
         this.repositorio = repositorio;
     }
 

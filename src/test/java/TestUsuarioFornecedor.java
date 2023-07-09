@@ -1,6 +1,6 @@
 import org.henrique.entidades.UsuarioFornecedor;
 import org.henrique.repositorio.UsuarioFornecedorRepositorio;
-import org.henrique.service.CadastroUsuarioFornecedor;
+import org.henrique.service.UsuarioFornecedorService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,11 +11,11 @@ public class TestUsuarioFornecedor {
 
         UsuarioFornecedor usuarioFornecedor = new UsuarioFornecedor();
         UsuarioFornecedorRepositorio repositorio = new UsuarioFornecedorRepositorio();
-        CadastroUsuarioFornecedor cadastro = new CadastroUsuarioFornecedor(repositorio);
+        UsuarioFornecedorService cadastro = new UsuarioFornecedorService(repositorio);
 
         usuarioFornecedor.setNomeCompleto("Henrique Venâncio");
         usuarioFornecedor.setNomeUsuario("hvs");
-        usuarioFornecedor.setCpf("34844609033");
+        usuarioFornecedor.setCpf("34844609033 ");
         usuarioFornecedor.setDataNascimento("24/04/2011");
         usuarioFornecedor.setSenha("788");
         usuarioFornecedor.setEmail("hvs@poli.br");
@@ -33,7 +33,7 @@ public class TestUsuarioFornecedor {
 
         UsuarioFornecedor usuarioFornecedor = new UsuarioFornecedor();
         UsuarioFornecedorRepositorio repositorio = new UsuarioFornecedorRepositorio();
-        CadastroUsuarioFornecedor cadastro = new CadastroUsuarioFornecedor(repositorio);
+        UsuarioFornecedorService cadastro = new UsuarioFornecedorService(repositorio);
 
         usuarioFornecedor.setNomeCompleto("Henrique Venâncio");
         usuarioFornecedor.setNomeUsuario("hvs");
@@ -52,7 +52,7 @@ public class TestUsuarioFornecedor {
 
         UsuarioFornecedor usuarioFornecedor = new UsuarioFornecedor();
         UsuarioFornecedorRepositorio repositorio = new UsuarioFornecedorRepositorio();
-        CadastroUsuarioFornecedor cadastro = new CadastroUsuarioFornecedor(repositorio);
+        UsuarioFornecedorService cadastro = new UsuarioFornecedorService(repositorio);
 
         usuarioFornecedor.setNomeCompleto(null);
         usuarioFornecedor.setNomeUsuario("hvs");
@@ -68,5 +68,6 @@ public class TestUsuarioFornecedor {
         Assertions.assertEquals(exception.getMessage(),mensagem);
 
     }
+
 
 }
