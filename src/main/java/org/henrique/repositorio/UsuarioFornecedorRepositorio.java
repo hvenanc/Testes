@@ -1,5 +1,6 @@
 package org.henrique.repositorio;
 
+import org.henrique.entidades.UsuarioColetor;
 import org.henrique.entidades.UsuarioFornecedor;
 
 import java.util.ArrayList;

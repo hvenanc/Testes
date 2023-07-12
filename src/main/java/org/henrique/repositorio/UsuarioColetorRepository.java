@@ -16,4 +16,8 @@ public class UsuarioColetorRepository {
     public List<UsuarioColetor> getColetores() {
         return this.coletores;
     }
+
+    public boolean vericaUsuario(UsuarioColetor coletor) {
+        return coletores.contains(coletor);
+    }
 }

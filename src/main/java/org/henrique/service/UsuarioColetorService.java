@@ -40,6 +40,9 @@ public class UsuarioColetorService {
         else if(!validaEmail(email)) {
             throw new RuntimeException("E-mail Inválido");
         }
+        else if(repositorio.vericaUsuario(coletor)) {
+            throw new RuntimeException("Usuário já cadastrado no sistema!");
+        }
 
         repositorio.inserirColetor(coletor);
         return "Usuário Cadastrado com Sucesso!";
