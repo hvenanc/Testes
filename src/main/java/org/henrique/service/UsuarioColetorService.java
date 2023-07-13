@@ -33,8 +33,8 @@ public class UsuarioColetorService {
             throw new RuntimeException("Insira um nome válido!");
         }
 
-        else if(cep == null || cep.equals("")) {
-            throw new RuntimeException("Insira um CEP válido!");
+        else if(!validaCep(cep)) {
+            throw new RuntimeException("CEP inválido!");
         }
 
         else if(!validaEmail(email)) {
@@ -52,6 +52,13 @@ public class UsuarioColetorService {
         String regx = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
         Pattern pattern = Pattern.compile(regx);
         Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    public boolean validaCep(String cep) {
+        String regex = "^\\d{5}-\\d{3}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(cep);
         return matcher.matches();
     }
 

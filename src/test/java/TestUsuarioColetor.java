@@ -14,7 +14,7 @@ public class TestUsuarioColetor {
         UsuarioColetorService cadastro = new UsuarioColetorService(repository);
 
         coletor.setNomeUsuario("Juan e Priscila Limpeza Ltda");
-        coletor.setCep("09350441");
+        coletor.setCep("09350-441");
         coletor.setEmail("marketing@juanepriscilalimpezaltda.com.br");
         coletor.setSenha("L1mpez@a");
         coletor.setCnpj("62140729000110");
@@ -32,7 +32,7 @@ public class TestUsuarioColetor {
         UsuarioColetorService cadastro = new UsuarioColetorService(repository);
 
         coletor.setNomeUsuario("Juan e Priscila Limpeza Ltda");
-        coletor.setCep("09350441");
+        coletor.setCep("09350-441");
         coletor.setEmail("marketing@juanepriscilalimpezaltda.com.br");
         coletor.setSenha("L1mpez@a");
         coletor.setCnpj("62140729000110");
@@ -44,6 +44,27 @@ public class TestUsuarioColetor {
         Exception exception = Assertions.assertThrows(RuntimeException.class, () -> cadastro.cadastrarUsuarioColetor(coletor2));
 
         String mensagem = "Usuário já cadastrado no sistema!";
+
+        Assertions.assertEquals(exception.getMessage(),mensagem);
+
+    }
+
+    @Test
+    public void testCadastroUsuarioColetorComCepInvalido() {
+
+        UsuarioColetor coletor = new UsuarioColetor();
+        UsuarioColetorRepository repository = new UsuarioColetorRepository();
+        UsuarioColetorService cadastro = new UsuarioColetorService(repository);
+
+        coletor.setNomeUsuario("Juan e Priscila Limpeza Ltda");
+        coletor.setCep("as");
+        coletor.setEmail("marketing@juanepriscilalimpezaltda.com.br");
+        coletor.setSenha("L1mpez@a");
+        coletor.setCnpj("62140729000110");
+
+        Exception exception = Assertions.assertThrows(RuntimeException.class, () -> cadastro.cadastrarUsuarioColetor(coletor));
+
+        String mensagem = "CEP inválido!";
 
         Assertions.assertEquals(exception.getMessage(),mensagem);
 
