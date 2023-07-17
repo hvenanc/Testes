@@ -6,6 +6,7 @@ import org.henrique.repositorio.UsuarioFornecedorRepositorio;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -39,6 +40,9 @@ public class UsuarioFornecedorService {
         }
         else if(!validaData(data)) {
             throw new RuntimeException("Data Inválida");
+        }
+        else if(verificaEmailCadastrado(repositorio.getUsuarios(), email)) {
+            throw new RuntimeException("E-mail já cadastrado");
         }
         else if(!validaEmail(email)) {
             throw new RuntimeException("E-mail Inválido");
@@ -112,6 +116,15 @@ public class UsuarioFornecedorService {
         Pattern pattern = Pattern.compile(regx);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    public boolean verificaEmailCadastrado(List<UsuarioFornecedor> usuario, String email) {
+        for (UsuarioFornecedor usuarioFornecedor : usuario) {
+            if(usuarioFornecedor.getEmail().equalsIgnoreCase(email)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
