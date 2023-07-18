@@ -4,8 +4,9 @@ import org.henrique.service.UsuarioColetorService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TestUsuarioColetor {
+import static org.mockito.Mockito.mock;
 
+public class TestUsuarioColetor {
     @Test
     public void testCadastroUsuarioColetorComDadosValidos() {
 
@@ -67,6 +68,27 @@ public class TestUsuarioColetor {
         String mensagem = "CEP inválido!";
 
         Assertions.assertEquals(exception.getMessage(),mensagem);
+
+    }
+
+    @Test
+    public void cadastroUsuarioColetorComCNPJInvalido() {
+
+        UsuarioColetor coletor = new UsuarioColetor();
+        UsuarioColetorRepository repository = new UsuarioColetorRepository();
+        UsuarioColetorService cadastro = new UsuarioColetorService(repository);
+
+        coletor.setNomeUsuario("Juan e Priscila Limpeza Ltda");
+        coletor.setCep("09350-441");
+        coletor.setEmail("marketing@juanepriscilalimpezaltda.com.br");
+        coletor.setSenha("L1mpez@a");
+        coletor.setCnpj("10100729000110");
+
+        Exception exception = Assertions.assertThrows(RuntimeException.class, () -> cadastro.cadastrarUsuarioColetor(coletor));
+
+        String mensagem = "Cnpj Inválido!";
+
+        Assertions.assertEquals(exception.getMessage(), mensagem);
 
     }
 }
